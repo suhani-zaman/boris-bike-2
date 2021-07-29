@@ -8,23 +8,31 @@ class DockingStation
 	end
 
 	def release_bike
-		raise "no bikes to release" if check == false
-		if check == true
-			bike = @dock.pop()
-		end
+		raise "no bikes to release" if empty? == true
+#		if check == true
+  	@dock.pop()
+#		end
 	end
 
 	def dock
-		raise "Dock station full" if @dock.count >= 20
-		if @dock.count < 20
-			@dock << Bike.new
-		end
+		raise "Dock station full" if full? == true
+		@dock << Bike.new
+		
 	end
-	def check
-		if @dock.count > 0
+	private
+	def empty?
+		if @dock.count == 0
 			return true
 		else
 			return false
 		end
   end
-end
+
+	def full?
+		if @dock.count >= 20
+			return true
+		else
+			return false
+		end
+	end
+end 
