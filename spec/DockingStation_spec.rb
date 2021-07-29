@@ -11,16 +11,12 @@ describe DockingStation do
     end
 
     it "Tests that DockingStation.release_bike gets a bike and then if it's working" do
-      station = DockingStation.new
-      expect(station.release_bike).to be_a Bike
-      expect(station.release_bike.working?).to eq true
+      bike = Bike.new
+      expect(bike).to be_a Bike
+      expect(bike.working?).to eq true
     end
 
-    it "Test that DockingStation.dock docks a bike" do
-      station = DockingStation.new
-      expect(station.dock_bike).not_to be_empty
+    it "checks if bike is available otherwise raises an error" do
+      expect { subject.release_bike }.to raise_error "no bikes to release"
     end
-
-    
-
 end

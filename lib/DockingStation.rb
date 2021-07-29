@@ -8,19 +8,18 @@ class DockingStation
 	end
 
 	def release_bike
-		Bike.new
+		raise "no bikes to release" if check == false
+  	bike = Bike.new
 	end
 
 	def dock_bike
 		@dock.push(Bike.new)
 	end
-
 	def check
-		if dock.empty?
-			puts "No bikes, sorry"
+		if @dock.count > 0
+			return true
 		else
-			dock
+			return false
 		end
-	end
-
+  end
 end
